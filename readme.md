@@ -94,4 +94,12 @@ var result = mockedView.controllerParse(mockData);
 
 ``` 
 
-You can use rbmv to create a view as a testable object and have access to all the defined methods within the view. Note that we injected underscore as a dependecy with the same name as the argument in the view i.e. _
+You can use rbmv to create a view as a testable object and have access to all the defined methods within the view. Note that we injected underscore as a dependecy with the same name as the argument in the view i.e. _    
+    
+### Credit 
+
+I have used the JQuery extend method so thanks to John Resig and team.
+
+###Licence
+
+MIT
