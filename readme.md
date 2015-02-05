@@ -21,9 +21,19 @@ First you have to require RBMV. The rest of the documentation will assume you al
 ```
 
 ### rbmv(url,dependencies)
+ 
+without defined dependencies  
+               
+```javascript
+var rbmv = require("rbmv"); 
+var mockedView = rbmv("path/to/view");
+```
+
+with defined dependencies
 
 ```javascript
 var rbmv = require("rbmv"); 
+
 var mockedView = rbmv("path/to/view",{
    _ : require("path/to/underscore"),
    custom : {
