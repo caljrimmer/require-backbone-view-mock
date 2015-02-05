@@ -61,7 +61,7 @@ define([
 
   return BaseView.extend({
 
-    template: list,
+    template: _.template(list),
 
     initialize : function () {},
 
@@ -79,12 +79,13 @@ define([
 });
 ``` 
 
-In this view you would like to test the method controllerParse. You want to instansiate the view without worrying about the dependencies as the method is agnostic of all dependencies other than underscore.
+In this view you would like to test the method controllerParse. You want to instansiate the view without worrying about the dependencies. This view is only dependent on underscore and the template to instansiate. We pass a mock template in and underscore.
 
 
 ```javascript
 var rbmv = require("rbmv"); 
-var mockedView = rbmv(__dirname + "path/to/view",{
+var mockedView = rbmv(__dirname + "path/to/view",{ 
+  list : "<div></div>",  
    _ : require("underscore")
 });                        
 
