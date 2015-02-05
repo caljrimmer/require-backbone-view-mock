@@ -25,7 +25,7 @@ var fs = require('fs');
 //Pull out url and mocked dependencies
 
 var Mock = function(url,deps){
-  var file = fs.readFileSync(__dirname + '/' + url, 'utf8');
+  var file = fs.readFileSync(url, 'utf8');
   var obj = getControllers(file,deps);
   return obj;
 }

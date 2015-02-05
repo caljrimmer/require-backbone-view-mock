@@ -26,7 +26,7 @@ without defined dependencies
                
 ```javascript
 var rbmv = require("rbmv"); 
-var mockedView = rbmv("path/to/view");
+var mockedView = rbmv(__dirname + "path/to/view");
 ```
 
 with defined dependencies
@@ -34,7 +34,7 @@ with defined dependencies
 ```javascript
 var rbmv = require("rbmv"); 
 
-var mockedView = rbmv("path/to/view",{
+var mockedView = rbmv(__dirname + "path/to/view",{
    _ : require("path/to/underscore"),
    custom : {
      method : function(arg){
@@ -84,7 +84,7 @@ In this view you would like to test the method controllerParse. You want to inst
 
 ```javascript
 var rbmv = require("rbmv"); 
-var mockedView = rbmv("path/to/view",{
+var mockedView = rbmv(__dirname + "path/to/view",{
    _ : require("underscore")
 });                        
 
