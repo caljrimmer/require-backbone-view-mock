@@ -1,4 +1,4 @@
-# Squire.js
+# RBMV
 
 RBMV is a dependency injector for Require.js users to make Backbone views easy to unit test.
 
@@ -78,9 +78,9 @@ var mockedView = rbmv("path/to/view",{
    _ : require("underscore")
 });                        
 
-var mockData = [{name:'one'},{name:'two}];
+var mockData = [{name:'one'},{name:'two'}];
 var result = mockedView.controllerParse(mockData);
-//result is [{name:'one',looped:true},{name:'two,looped:true}]
+//result is [{name:'one',looped:true},{name:'two',looped:true}]
 
 ``` 
 
