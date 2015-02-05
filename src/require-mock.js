@@ -20,7 +20,6 @@
 **/
 
 var fs = require('fs');
-var jQuery = require('jQuery'); 
 
 //Grab the required file
 //Pull out url and mocked dependencies
@@ -31,72 +30,28 @@ var Mock = function(url,deps){
   return obj;
 }
 
-//Jquery Extend Function
+//Underscore Extend Function
 //Extend added as default to all empty dependencies
-var extend = function() {
-  var options, name, src, copy, copyIsArray, clone,
-    target = arguments[0] || {},
-    i = 1,
-    length = arguments.length,
-    deep = false;
-
-  // Handle a deep copy situation
-  if ( typeof target === "boolean" ) {
-    deep = target;
-
-    // Skip the boolean and the target
-    target = arguments[ i ] || {};
-    i++;
-  }
-
-  // Handle case when target is a string or something (possible in deep copy)
-  if ( typeof target !== "object" && !jQuery.isFunction(target) ) {
-    target = {};
-  }
-
-  // Extend jQuery itself if only one argument is passed
-  if ( i === length ) {
-    target = this;
-    i--;
-  }
-
-  for ( ; i < length; i++ ) {
-    // Only deal with non-null/undefined values
-    if ( (options = arguments[ i ]) != null ) {
-      // Extend the base object
-      for ( name in options ) {
-        src = target[ name ];
-        copy = options[ name ];
-
-        // Prevent never-ending loop
-        if ( target === copy ) {
-          continue;
-        }
-
-        // Recurse if we're merging plain objects or arrays
-        if ( deep && copy && ( jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) ) ) {
-          if ( copyIsArray ) {
-            copyIsArray = false;
-            clone = src && jQuery.isArray(src) ? src : [];
-
-          } else {
-            clone = src && jQuery.isPlainObject(src) ? src : {};
-          }
-
-          // Never move original objects, clone them
-          target[ name ] = jQuery.extend( deep, clone, copy );
-
-        // Don't bring in undefined values
-        } else if ( copy !== undefined ) {
-          target[ name ] = copy;
-        }
+var extend = function(obj) { 
+  
+  var isObject = function(obj) {
+    var type = typeof obj;
+    return type === 'function' || type === 'object' && !!obj;
+  };    
+  
+  
+  if (!isObject(obj)) return obj;
+  var source, prop;
+  for (var i = 1, length = arguments.length; i < length; i++) {
+    source = arguments[i];
+    for (prop in source) {
+      if (hasOwnProperty.call(source, prop)) {
+        obj[prop] = source[prop];
       }
     }
-  }
-
-  // Return the modified object
-  return target;
-};
+  }  
+  return obj; 
+};  
 
 //Finds dependenies in required file
 //syncs supplied dependcies with expected dependencies
@@ -111,6 +66,9 @@ var getControllers = function(data,deps){
   }
 
   var define = function(dep,func){
+    if(!deps){
+      deps = {};
+    }
     var args = getArguments(func);
     var newArray = [];
     args.forEach(function(arg){

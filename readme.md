@@ -98,7 +98,7 @@ You can use rbmv to create a view as a testable object and have access to all th
     
 ### Credit 
 
-I have used the JQuery extend method so thanks to John Resig and team.
+I have used the underscore extend method so thanks to the underscore team.
 
 ###Licence
 

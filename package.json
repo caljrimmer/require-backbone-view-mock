@@ -7,8 +7,7 @@
 		"backbone"
 	],
 	"dependencies": {
-		"fs" : "*",
-		"jQuery" : "*"
+		"fs" : "*"
 	},
 	"author": "Callum Rimmer <callum@deadtrendy.co.uk>",
 	"repository": {
@@ -16,6 +15,6 @@
 		"url": "https://github.com/caljrimmer/require-backbone-view-mock.git"    
 	},  
 	"main": "src/require-mock.js",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"license": "MIT"      
 }
