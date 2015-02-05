@@ -1,6 +1,6 @@
 # RBMV
 
-RBMV is a dependency injector for Require.js users to make Backbone views easy to unit test.
+RBMV is a dependency injector for require.js users to make Backbone views easy to unit test.
 
 ## Installation
 
@@ -44,7 +44,7 @@ var mockedView = rbmv(__dirname + "path/to/view",{
 });
 ``` 
 
-Dependencies are optional. If any dependencies are missing, rbmv creates dummy objects with an extend method. 
+Dependencies are optional. If any dependencies are missing then rbmv creates dummy objects with an extend method. 
 
 ### Full Example  
         
@@ -79,7 +79,7 @@ define([
 });
 ``` 
 
-In this view you would like to test the method controllerParse. You want to instansiate the view without worrying about the dependencies. This view is only dependent on underscore and the template to instansiate. We pass a mock template in and underscore.
+In this view, you would like to test the method controllerParse. You want to instantiate the view without worrying about the dependencies. This view is only dependent on underscore and the template to instantiate. We pass in a mock template and underscore.
 
 
 ```javascript
@@ -95,12 +95,12 @@ var result = mockedView.controllerParse(mockData);
 
 ``` 
 
-You can use rbmv to create a view as a testable object and have access to all the defined methods within the view. Note that we injected underscore as a dependecy with the same name as the argument in the view i.e. _    
+You can use rbmv to create a view as a testable object and have access to all the defined methods within the view. Note that we injected underscore and the template as a dependencies with the same name as the arguments in the view i.e. _ and list   
     
 ### Credit 
 
 I have used the underscore extend method so thanks to the underscore team.
 
-###Licence
+### Licence
 
 MIT
