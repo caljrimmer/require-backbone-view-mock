@@ -7,7 +7,8 @@
 		"backbone"
 	],
 	"dependencies": {
-		"fs" : "*"
+		"fs" : "*",
+		"jQuery" : "*"
 	},
 	"author": "Callum Rimmer <callum@deadtrendy.co.uk>",
 	"repository": {

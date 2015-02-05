@@ -20,6 +20,7 @@
 **/
 
 var fs = require('fs');
+var jQuery = require('jQuery'); 
 
 //Grab the required file
 //Pull out url and mocked dependencies
