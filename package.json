@@ -1,0 +1,17 @@
+{
+	name: "requirejs-backbone-view-mock",
+	description: "Mocks requirejs dependencies for backbone views and returns an instantiated backbone view with all methods public for unit testing",
+	keywords: [
+		"require",
+		"mock",
+		"backbone"
+	],
+	author: "Callum Rimmer <callum@deadtrendy.co.uk>",
+	repository: {
+		type: "git",
+		url: "git://github.com/caljrimmer/underscore.git"    
+	},  
+	main: "src/require-mock.js",
+	version: "0.0.1",
+	license: "MIT"      
+}
