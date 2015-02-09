@@ -51,7 +51,39 @@ var extend = function(obj) {
     }
   }  
   return obj; 
-};  
+};
+
+//Backbone mock as default extend for empty dependency
+var createBackbone = function(){
+  return {
+    Model : {
+      extend : extend
+    },
+    Collection : {
+      extend : extend
+    },
+    View : {
+      extend : extend
+    }
+  }
+}; 
+ 
+//This method is used if the require is included inline via being passed in define(require);
+var createRequire = function(reqDeps){
+  this.requireDeps = reqDeps;
+  var that = this;
+  return function(url){
+    var transform = createBackbone();
+    for(var prop in that.requireDeps) {
+      if(that.requireDeps.hasOwnProperty(prop)){
+        if(url === prop){
+          transform = that.requireDeps[prop];  
+        } 
+      }
+    }
+    return transform;
+  }
+};
 
 //Finds dependenies in required file
 //syncs supplied dependcies with expected dependencies
@@ -66,21 +98,35 @@ var getControllers = function(data,deps){
   }
 
   var define = function(dep,func){
+    var newArray = [];
+    
+    //If no custom Dendencies
     if(!deps){
       deps = {};
     }
+
+    //If require is passed in the define to allow inline require statements
+    //Backbone must be supplied as a custom Dependency 
+    if(!arguments[1] && deps.hasOwnProperty('require')){
+      func = arguments[0];
+    }
+
     var args = getArguments(func);
-    var newArray = [];
     args.forEach(function(arg){
       if(deps[arg]){
-        newArray.push(deps[arg])
+        if(arg === "require"){
+          deps[arg] = new createRequire(deps[arg]);
+        }
+        newArray.push(deps[arg]);
       }else{
         newArray.push({ extend : extend });  
       }
-      
     });
+
     return func.apply(this,newArray);
+
   }
+
   return eval(data);
 
 }
