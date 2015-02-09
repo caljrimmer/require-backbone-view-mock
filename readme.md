@@ -1,6 +1,6 @@
 # RBMV
 
-RBMV is a dependency injector for require.js users to make Backbone views easy to unit test.
+RBMV is a dependency injector for require.js users to make Backbone views easy to unit test. No need for a headless browsers and it works with any testing framework.
 
 ## Installation
 
